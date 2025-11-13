@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
   <title>Internal Marks Calculator</title>
   <meta name="description" content="Simple, mobile-friendly internal marks calculator with detailed breakdown." />
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XFYY4YVQS7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-XFYY4YVQS7');
+  </script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root{
@@ -131,6 +140,7 @@
 
       if(isNaN(aat1)||aat1<0||aat1>10||isNaN(aat2)||aat2<0||aat2>10||isNaN(mid1)||mid1<0||mid1>30||isNaN(mid2)||mid2<0||mid2>30||isNaN(per)||per<0||per>100){
         result.innerHTML='<span style="color:var(--danger)">❌ Invalid inputs</span>';
+        // Note: We don't track invalid calculations in GA4
         return;
       }
 
@@ -171,11 +181,27 @@
       </div>`;
 
       result.innerHTML=output;
+
+      // --- GA4 Custom Event Tracking Added Here ---
+      if (typeof gtag === 'function') {
+        gtag('event', 'calculate_marks', {
+          'aat_score_avg': parseFloat(avgAAT.toFixed(2)),
+          'mid_score_weighted': parseFloat(midWeighted.toFixed(2)),
+          'attendance_percentage': per,
+          'final_internal_score': parseFloat(totalMarks.toFixed(2)),
+          'is_qualified': totalMarks >= 21 && per >= 65 // Custom dimension for easy filtering in GA4
+        });
+      }
+      // ------------------------------------------
     }
 
     function resetForm(){
       document.querySelectorAll('input').forEach(i=>i.value='');
       document.getElementById('result').textContent='Your result will appear here.';
+      // Optionally track reset event in GA4
+      if (typeof gtag === 'function') {
+        gtag('event', 'form_reset');
+      }
     }
   </script>
 </body>
