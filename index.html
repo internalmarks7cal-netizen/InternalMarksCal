@@ -1,12 +1,12 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
-  <title>Internal Marks Calculator</title>
-  <meta name="description" content="Simple, mobile-friendly internal marks calculator with detailed breakdown." />
-  
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XFYY4YVQS7"></script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+<title>Internal Marks Calculator</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XFYY4YVQS7"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -14,195 +14,307 @@
   
     gtag('config', 'G-XFYY4YVQS7');
   </script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#0f1724;
-      --card:#111a2b;
-      --muted:#94a3b8;
-      --accent:#60a5fa;
-      --accent2:#7c3aed;
-      --success:#16a34a;
-      --danger:#ef4444;
-      --radius:14px;
-    }
-    *{box-sizing:border-box;}
-    body{
-      margin:0;
-      font-family:'Poppins',sans-serif;
-      background:linear-gradient(180deg,var(--bg) 0%,#091529 100%);
-      color:#f1f5f9;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      min-height:100vh;
-      padding:16px;
-    }
-    .wrapper{
-      width:100%;
-      max-width:420px;
-      background:var(--card);
-      border-radius:var(--radius);
-      padding:20px;
-      box-shadow:0 4px 18px rgba(0,0,0,0.3);
-    }
-    h1{
-      text-align:center;
-      font-size:20px;
-      margin-bottom:6px;
-    }
-    p.lead{
-      text-align:center;
-      color:var(--muted);
-      font-size:13px;
-      margin-bottom:18px;
-    }
-    label{display:block;font-size:13px;margin-bottom:4px;color:var(--muted);}
-    input{
-      width:100%;
-      padding:10px 12px;
-      margin-bottom:14px;
-      border-radius:10px;
-      border:1px solid rgba(255,255,255,0.05);
-      background:rgba(255,255,255,0.05);
-      color:white;
-      font-size:15px;
-    }
-    button{
-      width:100%;
-      padding:12px;
-      border:none;
-      border-radius:10px;
-      font-size:16px;
-      font-weight:600;
-      margin-top:6px;
-    }
-    .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#fff;}
-    .btn-secondary{background:transparent;border:1px solid rgba(255,255,255,0.1);color:var(--muted);}
+<style>
+:root{
+  --bg:#0a0f18;
+  --glass:rgba(255,255,255,0.08);
+  --border:rgba(255,255,255,0.18);
+  --text:#e2e8f0;
+  --muted:#94a3b8;
+  --primary:#4f46e5;
+  --secondary:#06b6d4;
+  --success:#16a34a;
+  --danger:#ef4444;
+  --radius:18px;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(160deg,#0a0f18,#111b2c,#162238);
+  color:var(--text);
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow-x:hidden;
+}
 
-    #result{
-      margin-top:18px;
-      background:rgba(255,255,255,0.04);
-      padding:14px;
-      border-radius:10px;
-      font-size:14px;
-    }
-    #result strong{color:var(--accent);}
-    .breakdown{
-      margin-top:10px;
-      padding:10px;
-      background:rgba(255,255,255,0.06);
-      border-radius:10px;
-      font-size:13px;
-      color:var(--muted);
-    }
-    @media(max-width:480px){
-      h1{font-size:18px;}
-      body{padding:10px;}
-    }
-  </style>
+/* ===========================================
+   ADVANCED SPLASH SCREEN — 1 SECOND
+   =========================================== */
+
+#splash{
+  position:fixed;
+  inset:0;
+  background:#000814;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+  animation: splashFade 1s ease forwards;
+  animation-delay: 0.95s;
+}
+
+.logo-advanced span{
+  display:block;
+  font-size:32px;
+  font-weight:700;
+  letter-spacing:2px;
+  color:#00eaff;
+  opacity:0;
+  text-shadow:0 0 12px #00eaff, 0 0 28px #00eaff;
+}
+
+.logo-advanced .line1{ animation: glowUp 0.35s ease forwards; }
+.logo-advanced .line2{ animation: glowUp 0.35s ease forwards 0.22s; }
+.logo-advanced .line3{ animation: glowUp 0.35s ease forwards 0.44s; }
+
+@keyframes glowUp{
+  0%{ opacity:0; transform:translateY(18px) scale(0.92); }
+  100%{ opacity:1; transform:translateY(0) scale(1); }
+}
+
+@keyframes splashFade{
+  0%{ opacity:1; }
+  100%{ opacity:0; visibility:hidden; }
+}
+
+/* ===========================================
+   MAIN WRAPPER UI
+   =========================================== */
+
+.wrapper{
+  width:100%;
+  max-width:430px;
+  padding:24px;
+  border-radius:var(--radius);
+  background:var(--glass);
+  border:1px solid var(--border);
+  backdrop-filter:blur(14px) saturate(160%);
+  box-shadow:0 20px 40px rgba(0,0,0,0.36);
+  transform:translateY(40px);
+  animation:slideUp 0.7s ease forwards;
+}
+@keyframes slideUp{
+  0%{opacity:0;transform:translateY(40px);}
+  100%{opacity:1;transform:translateY(0);}
+}
+
+h1{text-align:center;font-size:22px;margin-bottom:4px;}
+.lead{text-align:center;color:var(--muted);font-size:13px;margin-bottom:18px;}
+
+label{font-size:13px;margin-bottom:4px;color:var(--muted);display:block;}
+
+input{
+  width:100%;
+  padding:12px;
+  margin-bottom:14px;
+  border-radius:12px;
+  background:rgba(255,255,255,0.1);
+  border:1px solid rgba(255,255,255,0.15);
+  color:white;
+  font-size:15px;
+  outline:none;
+  transition:0.25s;
+}
+input:focus{
+  border-color:var(--secondary);
+  background:rgba(255,255,255,0.16);
+}
+
+button{
+  width:100%;
+  padding:13px;
+  border:none;
+  border-radius:14px;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+  margin-top:8px;
+  transition:0.3s;
+}
+
+.btn-primary{
+  background:linear-gradient(135deg,var(--primary),var(--secondary));
+  color:white;
+  box-shadow:0 4px 14px rgba(0,0,0,0.25);
+}
+.btn-primary:hover{
+  transform:translateY(-2px);
+  box-shadow:0 6px 20px rgba(0,0,0,0.3);
+}
+
+.btn-secondary{
+  background:rgba(255,255,255,0.12);
+  border:1px solid rgba(255,255,255,0.2);
+  color:var(--muted);
+}
+.btn-secondary:hover{
+  background:rgba(255,255,255,0.18);
+}
+
+#result{
+  margin-top:18px;
+  background:rgba(255,255,255,0.08);
+  padding:14px;
+  border-radius:14px;
+  font-size:14px;
+  line-height:1.6;
+}
+
+.breakdown{
+  margin-top:12px;
+  padding:12px;
+  border-radius:12px;
+  background:rgba(255,255,255,0.12);
+  font-size:13px;
+  color:var(--muted);
+}
+
+@media(max-width:480px){
+  .wrapper{padding:18px;}
+  h1{font-size:20px;}
+}
+</style>
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XFYY4YVQS7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XFYY4YVQS7');
+</script>
+
 </head>
 <body>
-  <div class="wrapper">
-    <h1>Internal Marks Calculator</h1>
-    <p class="lead">Quick mobile version with full internal calculation details</p>
 
-    <label for="aat1">AAT 1 (0–10)</label>
-    <input id="aat1" type="number" min="0" max="10" step="0.1" placeholder="Enter AAT1">
-
-    <label for="aat2">AAT 2 (0–10)</label>
-    <input id="aat2" type="number" min="0" max="10" step="0.1" placeholder="Enter AAT2">
-
-    <label for="mid1">Mid 1 (0–30)</label>
-    <input id="mid1" type="number" min="0" max="30" step="0.5" placeholder="Enter Mid1">
-
-    <label for="mid2">Mid 2 (0–30)</label>
-    <input id="mid2" type="number" min="0" max="30" step="0.5" placeholder="Enter Mid2">
-
-    <label for="per">Attendance % (1–100)</label>
-    <input id="per" type="number" min="0" max="100" step="0.1" placeholder="Enter Attendance %">
-
-    <button class="btn-primary" onclick="calculate()">Calculate</button>
-    <button class="btn-secondary" onclick="resetForm()">Reset</button>
-
-    <div id="result">Your result will appear here.</div>
+<!-- ❇️ Advanced Splash Screen -->
+<div id="splash">
+  <div class="logo-advanced">
+    <span class="line1">InternalMarksCal</span>
   </div>
+</div>
 
-  <script>
-    function calculate(){
-      const aat1=parseFloat(document.getElementById('aat1').value);
-      const aat2=parseFloat(document.getElementById('aat2').value);
-      const mid1=parseFloat(document.getElementById('mid1').value);
-      const mid2=parseFloat(document.getElementById('mid2').value);
-      const per=parseFloat(document.getElementById('per').value);
-      const result=document.getElementById('result');
+<div class="wrapper" role="main" aria-labelledby="title">
+  <h1 id="title">Internal Marks Calculator</h1>
+  <p class="lead">R24 • Created By• Anonymous</p>
 
-      if(isNaN(aat1)||aat1<0||aat1>10||isNaN(aat2)||aat2<0||aat2>10||isNaN(mid1)||mid1<0||mid1>30||isNaN(mid2)||mid2<0||mid2>30||isNaN(per)||per<0||per>100){
-        result.innerHTML='<span style="color:var(--danger)">❌ Invalid inputs</span>';
-        // Note: We don't track invalid calculations in GA4
-        return;
-      }
+  <label for="aat1">AAT 1 (0–10)</label>
+  <input id="aat1" name="aat1" type="number" min="0" max="10" step="0.1" placeholder="Enter AAT1">
 
-      const avgAAT=(aat1+aat2)/2;
-      const aatMarks=(avgAAT/10)*15;
-      const bestMid=Math.max(mid1,mid2);
-      const otherMid=Math.min(mid1,mid2);
-      const midWeight=(bestMid*0.75+otherMid*0.25);
-      const midWeighted=(midWeight/30)*20;
+  <label for="aat2">AAT 2 (0–10)</label>
+  <input id="aat2" name="aat2" type="number" min="0" max="10" step="0.1" placeholder="Enter AAT2">
 
-      let attendanceBonus=0;
-      let condonationMsg="";
-      let notQualified=false;
+  <label for="mid1">Mid 1 (0–30)</label>
+  <input id="mid1" name="mid1" type="number" min="0" max="30" step="0.1" placeholder="Enter Mid1">
 
-      if(per>=90)attendanceBonus=5;
-      else if(per>=85)attendanceBonus=4;
-      else if(per>=80)attendanceBonus=3;
-      else if(per>=75)attendanceBonus=2;
-      else if(per>=65){attendanceBonus=0;condonationMsg='⚠️ Condonation Fee ₹500 Required';}
-      else{attendanceBonus=0;notQualified=true;}
+  <label for="mid2">Mid 2 (0–30)</label>
+  <input id="mid2" name="mid2" type="number" min="0" max="30" step="0.1" placeholder="Enter Mid2">
 
-      const totalMarks=aatMarks+midWeighted+attendanceBonus;
-      let output=`<strong>Total Internal Marks (out of 40): ${totalMarks.toFixed(2)}</strong><br>`;
+  <label for="per">Attendance % (1–100)</label>
+  <input id="per" name="per" type="number" min="0" max="100" step="0.1" placeholder="Enter Attendance %">
 
-      if(notQualified)output+='<span style="color:var(--danger)">❌ Not Qualified: Attendance below 65%</span>';
-      else if(totalMarks>=21)output+='<span style="color:var(--success)">✅ Qualified: You can write the semester exam</span>';
-      else output+='<span style="color:var(--danger)">❌ Not Qualified: Marks below 21</span>';
+  <button class="btn-primary" id="calcBtn" type="button">Calculate</button>
+  <button class="btn-secondary" id="resetBtn" type="button">Reset</button>
 
-      if(condonationMsg)output+=`<br><span style="color:orange">${condonationMsg}</span>`;
+  <div id="result" aria-live="polite">Your result will appear here.</div>
+</div>
 
-      output+=`<div class='breakdown'>
-        <div><strong>Average AAT:</strong> (${aat1}+${aat2})/2 = ${avgAAT.toFixed(2)}</div>
-        <div><strong>AAT Marks:</strong> (${avgAAT.toFixed(2)}/10) × 15 = ${aatMarks.toFixed(2)}</div>
-        <div><strong>Mid Weighted:</strong> Best ${bestMid} × 0.75 + Other ${otherMid} × 0.25 = ${midWeight.toFixed(2)}</div>
-        <div><strong>Mid Marks:</strong> (${midWeight.toFixed(2)}/30) × 20 = ${midWeighted.toFixed(2)}</div>
-        <div><strong>Attendance Bonus:</strong> ${attendanceBonus.toFixed(2)}</div>
-        <div><strong>Final Total:</strong> ${aatMarks.toFixed(2)} + ${midWeighted.toFixed(2)} + ${attendanceBonus.toFixed(2)} = ${totalMarks.toFixed(2)}</div>
-      </div>`;
+<script>
+function getFloat(id){
+  const el = document.getElementById(id);
+  if(!el) return null;
+  const v = el.value.trim();
+  if(v === '') return null;
+  const n = parseFloat(v);
+  return Number.isFinite(n) ? n : null;
+}
 
-      result.innerHTML=output;
+function calculate(){
+  const resultEl = document.getElementById('result');
 
-      // --- GA4 Custom Event Tracking Added Here ---
-      if (typeof gtag === 'function') {
-        gtag('event', 'calculate_marks', {
-          'aat_score_avg': parseFloat(avgAAT.toFixed(2)),
-          'mid_score_weighted': parseFloat(midWeighted.toFixed(2)),
-          'attendance_percentage': per,
-          'final_internal_score': parseFloat(totalMarks.toFixed(2)),
-          'is_qualified': totalMarks >= 21 && per >= 65 // Custom dimension for easy filtering in GA4
-        });
-      }
-      // ------------------------------------------
-    }
+  const aat1 = getFloat('aat1');
+  const aat2 = getFloat('aat2');
+  const mid1 = getFloat('mid1');
+  const mid2 = getFloat('mid2');
+  const per  = getFloat('per');
 
-    function resetForm(){
-      document.querySelectorAll('input').forEach(i=>i.value='');
-      document.getElementById('result').textContent='Your result will appear here.';
-      // Optionally track reset event in GA4
-      if (typeof gtag === 'function') {
-        gtag('event', 'form_reset');
-      }
-    }
-  </script>
+  if (aat1 === null || aat2 === null || mid1 === null || mid2 === null || per === null) {
+    resultEl.innerHTML = '<span style="color:var(--danger)">❌ Please fill all fields with valid numbers.</span>';
+    return;
+  }
+  if (aat1 < 0 || aat1 > 10 || aat2 < 0 || aat2 > 10) {
+    resultEl.innerHTML = '<span style="color:var(--danger)">❌ AAT values must be between 0 and 10.</span>';
+    return;
+  }
+  if (mid1 < 0 || mid1 > 30 || mid2 < 0 || mid2 > 30) {
+    resultEl.innerHTML = '<span style="color:var(--danger)">❌ Mid values must be between 0 and 30.</span>';
+    return;
+  }
+  if (per < 0 || per > 100) {
+    resultEl.innerHTML = '<span style="color:var(--danger)">❌ Attendance must be between 0 and 100.</span>';
+    return;
+  }
+
+  const avgAAT = (aat1 + aat2) / 2;
+  const aatMarks = (avgAAT / 10) * 15;
+
+  const bestMid = Math.max(mid1, mid2);
+  const otherMid = Math.min(mid1, mid2);
+  const midWeight = bestMid * 0.75 + otherMid * 0.25;
+  const midMarks = (midWeight / 30) * 20;
+
+  let attendanceBonus = 0;
+  let condonationMsg = '';
+  let notQualifiedAttendance = false;
+
+  if (per >= 90) attendanceBonus = 5;
+  else if (per >= 85) attendanceBonus = 4;
+  else if (per >= 80) attendanceBonus = 3;
+  else if (per >= 75) attendanceBonus = 2;
+  else if (per >= 65) { attendanceBonus = 0; condonationMsg = '⚠️ Condonation Fee ₹500 Required'; }
+  else { attendanceBonus = 0; notQualifiedAttendance = true; }
+
+  const totalMarks = aatMarks + midMarks + attendanceBonus;
+
+  let output = `<strong>Total Internal Marks: ${totalMarks.toFixed(2)} / 40</strong><br>`;
+
+  if (notQualifiedAttendance) {
+    output += `<span style="color:var(--danger)">❌ Not Qualified: Attendance below 65%</span>`;
+  } else if (totalMarks >= 21) {
+    output += `<span style="color:var(--success)">✅ Qualified: You can write the semester exam</span>`;
+  } else {
+    output += `<span style="color:var(--danger)">❌ Not Qualified: Marks below 21</span>`;
+  }
+
+  if (condonationMsg) output += `<br><span style="color:orange">${condonationMsg}</span>`;
+
+  output += `<div class="breakdown">
+    <div><strong>Average AAT:</strong> (${aat1.toFixed(2)} + ${aat2.toFixed(2)}) / 2 = ${avgAAT.toFixed(2)}</div>
+    <div><strong>AAT Marks:</strong> (${avgAAT.toFixed(2)}/10) × 15 = ${aatMarks.toFixed(2)}</div>
+    <div><strong>Mid Weighted:</strong> Best ${bestMid.toFixed(2)} × 0.75 + Other ${otherMid.toFixed(2)} × 0.25 = ${midWeight.toFixed(2)}</div>
+    <div><strong>Mid Marks:</strong> (${midWeight.toFixed(2)}/30) × 20 = ${midMarks.toFixed(2)}</div>
+    <div><strong>Attendance Bonus:</strong> ${attendanceBonus.toFixed(2)}</div>
+    <div><strong>Final Total:</strong> ${aatMarks.toFixed(2)} + ${midMarks.toFixed(2)} + ${attendanceBonus.toFixed(2)} = ${totalMarks.toFixed(2)}</div>
+  </div>`;
+
+  resultEl.innerHTML = output;
+}
+
+function resetForm(){
+  document.getElementById('aat1').value = '';
+  document.getElementById('aat2').value = '';
+  document.getElementById('mid1').value = '';
+  document.getElementById('mid2').value = '';
+  document.getElementById('per').value = '';
+  document.getElementById('result').innerHTML = 'Your result will appear here.';
+}
+
+document.getElementById('calcBtn').addEventListener('click', calculate);
+document.getElementById('resetBtn').addEventListener('click', resetForm);
+</script>
+
 </body>
 </html>
