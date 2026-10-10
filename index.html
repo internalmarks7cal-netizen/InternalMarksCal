@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +8,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XFYY4YVQS7"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XFYY4YVQS7">
+</script>
 <script>
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
@@ -80,13 +80,12 @@ body {
         #06b6d4
     );
     background-size: 400% 400%;
-    animation: bgMove 4s ease infinite, fadeOut 1s ease forwards;
-    animation-delay: 0s, 1s;
+    animation: bgMove 10s ease infinite;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    z-index: 99999;
+    z-index: 100000;
 }
 
 .glow {
@@ -291,10 +290,266 @@ button:hover {
         font-size: 25px;
     }
 }
+
+/* Marks Required to Pass feature */
+.pass-toggle {
+    margin-top: 14px;
+    background: linear-gradient(90deg, #06b6d4, #4f46e5);
+    font-size: 15px;
+}
+.pass-panel {
+    display: none;
+    margin-top: 18px;
+    padding: 18px;
+    border-radius: 16px;
+    background: rgba(2, 6, 23, .45);
+    border: 1px solid rgba(255,255,255,.16);
+    color: #fff;
+}
+.pass-panel.show { display: block; }
+.pass-panel h3 { text-align: center; font-size: 21px; margin-bottom: 6px; }
+.pass-intro { text-align: center; color: #dbeafe; font-size: 12px; margin-bottom: 14px; }
+.pass-panel label { margin-top: 10px; }
+.pass-panel input { margin-bottom: 2px; }
+.pass-result {
+    background: #fff; color: #111827; border-radius: 12px;
+    padding: 13px; margin-top: 15px; line-height: 1.7; overflow-wrap: anywhere;
+}
+.pass-status { display: inline-block; padding: 5px 9px; border-radius: 999px; font-weight: 700; font-size: 12px; margin-top: 8px; background: #dcfce7; color: #166534; }
+.pass-status.bad { background: #fee2e2; color: #991b1b; }
+.pass-status.warn { background: #fef3c7; color: #92400e; }
+.pass-charts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; }
+.pass-chart-card { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); border-radius: 12px; padding: 12px; min-width: 0; }
+.pass-chart-card h4 { font-size: 13px; text-align: center; margin-bottom: 3px; }
+.pass-chart-card p { color: #dbeafe; font-size: 11px; text-align: center; margin-bottom: 10px; }
+.pass-pie-wrap { display: grid; place-items: center; margin: 8px 0 12px; }
+.pass-pie { width: min(100%, 145px); aspect-ratio: 1; border-radius: 50%; position: relative; }
+.pass-pie::after { content: ""; position: absolute; inset: 25%; background: #fff; border-radius: 50%; }
+.pass-pie-center { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; z-index: 1; color: #111827; }
+.pass-pie-center strong { font-size: 16px; }
+.pass-pie-center span { font-size: 9px; color: #64748b; }
+.pass-legend { display: grid; gap: 6px; font-size: 11px; }
+.pass-legend-row { display: flex; justify-content: space-between; gap: 5px; align-items: center; }
+.pass-legend-label { display: flex; align-items: center; gap: 5px; color: #e2e8f0; }
+.pass-dot { width: 9px; height: 9px; display: inline-block; border-radius: 2px; flex-shrink: 0; }
+.pass-note { color: #cbd5e1; font-size: 11px; margin-top: 12px; line-height: 1.5; }
+.pass-error { color: #fecaca; font-size: 12px; margin-top: 8px; min-height: 1em; }
+@media (max-width: 480px) {
+    .pass-panel { padding: 14px; }
+    .pass-charts { grid-template-columns: 1fr; }
+}
+
+
+/* ===== Modern Student Dashboard UI refresh ===== */
+:root {
+  --ui-ink: #172033;
+  --ui-muted: #64748b;
+  --ui-border: #e5eaf2;
+  --ui-primary: #4f46e5;
+  --ui-teal: #0f9f91;
+}
+html { scroll-behavior: smooth; }
+body {
+  color: var(--ui-ink);
+  background: #f4f7fc;
+  background-image: radial-gradient(circle at 8% 4%, rgba(99,102,241,.10), transparent 28%),
+                    radial-gradient(circle at 92% 20%, rgba(20,184,166,.08), transparent 24%);
+  font-family: 'Poppins', sans-serif;
+}
+::-webkit-scrollbar-track { background: #edf1f7; }
+::-webkit-scrollbar-thumb { background: #a5b4fc; }
+.marquee-box {
+  background: linear-gradient(90deg, #4338ca, #6366f1, #0f9f91);
+  font-size: 13px;
+  padding: 9px 0;
+  box-shadow: 0 4px 16px rgba(30,41,59,.12);
+}
+.container {
+  width: min(94%, 760px);
+  margin: 30px auto;
+  padding: clamp(20px, 4vw, 34px);
+  background: rgba(255,255,255,.96);
+  color: var(--ui-ink);
+  border: 1px solid rgba(226,232,240,.95);
+  border-radius: 26px;
+  box-shadow: 0 22px 60px rgba(30,41,59,.10);
+  backdrop-filter: blur(14px);
+  position: relative;
+  overflow: hidden;
+}
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #4f46e5, #06b6d4, #14b8a6);
+}
+.container h2 {
+  color: #172033;
+  font-size: clamp(26px, 4vw, 34px);
+  letter-spacing: -.8px;
+  margin: 2px 0 6px;
+}
+.container > .sub {
+  color: #64748b;
+  font-size: 13px;
+  margin-bottom: 24px;
+}
+label { color: #334155; font-size: 13px; margin-top: 15px; }
+input {
+  color: #172033;
+  background: #f8fafc;
+  border: 1px solid #dbe3ef;
+  border-radius: 12px;
+  padding: 13px 14px;
+  margin-top: 7px;
+  box-shadow: inset 0 1px 2px rgba(15,23,42,.025);
+  transition: border-color .18s ease, box-shadow .18s ease, background .18s ease;
+}
+input::placeholder { color: #94a3b8; }
+input:focus {
+  background: #fff;
+  border: 1px solid #818cf8;
+  box-shadow: 0 0 0 4px rgba(99,102,241,.12);
+}
+button {
+  background: linear-gradient(100deg, #4f46e5, #6366f1);
+  border-radius: 13px;
+  padding: 13px 16px;
+  font-size: 15px;
+  box-shadow: 0 8px 18px rgba(79,70,229,.20);
+  transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+}
+button:hover { opacity: 1; filter: brightness(1.04); transform: translateY(-1px); box-shadow: 0 11px 23px rgba(79,70,229,.23); }
+.result {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  color: #1e293b;
+  padding: 19px;
+  line-height: 1.85;
+  font-size: 14px;
+}
+.ad-container { color: #64748b; }
+.pass-toggle {
+  background: linear-gradient(100deg, #0f766e, #0d9488);
+  box-shadow: 0 8px 18px rgba(13,148,136,.18);
+  margin-top: 14px;
+}
+.pass-panel {
+  background: #f8fafc;
+  border: 1px solid #dce5f1;
+  border-radius: 20px;
+  color: #172033;
+  padding: clamp(16px, 3vw, 24px);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.9);
+}
+.pass-panel h3 { color: #172033; font-size: 22px; }
+.pass-intro { color: #64748b; font-size: 13px; }
+.pass-panel label { color: #334155; }
+.pass-panel input { background: #fff; }
+.pass-panel button:not(.pass-toggle) { background: linear-gradient(100deg, #0f766e, #0d9488); box-shadow: 0 8px 18px rgba(13,148,136,.16); }
+.pass-result {
+  border: 1px solid #dce5f1;
+  background: #fff;
+  color: #172033;
+  border-radius: 16px;
+  padding: 17px;
+  box-shadow: 0 5px 16px rgba(15,23,42,.04);
+}
+.pass-status { padding: 6px 11px; }
+.pass-charts { gap: 14px; }
+.pass-chart-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 15px;
+  box-shadow: 0 5px 16px rgba(15,23,42,.035);
+}
+.pass-chart-card h4 { color: #1e293b; font-size: 13px; }
+.pass-chart-card p { color: #64748b; font-size: 11px; }
+.pass-legend-label { color: #475569; }
+.pass-note { color: #64748b; }
+.pass-error { color: #dc2626; }
+.splash-card { border-radius: 26px; box-shadow: 0 24px 70px rgba(0,0,0,.3); }
+@media (max-width: 600px) {
+  .container { width: calc(100% - 24px); padding: 23px 18px; margin: 22px auto; border-radius: 20px; }
+  .container h2 { font-size: 27px; }
+  .container > .sub { margin-bottom: 18px; }
+  .pass-charts { grid-template-columns: 1fr; }
+  .pass-chart-card { padding: 16px; }
+  .pass-pie { width: min(100%, 165px); }
+}
+
+
+
+/* Floating study-tools background animation */
+.study-tools-bg {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  isolation: isolate;
+  opacity: .76;
+}
+.study-tool {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  display: block;
+  font-size: var(--size, 34px);
+  opacity: .22;
+  filter: drop-shadow(0 8px 12px rgba(79, 70, 229, .12));
+  transform: rotate(var(--rotate, 0deg));
+  animation: studyFloat var(--duration, 18s) ease-in-out var(--delay, 0s) infinite alternate;
+  will-change: transform;
+  user-select: none;
+}
+@keyframes studyFloat {
+  0% { transform: translate3d(0, 18px, 0) rotate(var(--rotate, 0deg)); }
+  50% { transform: translate3d(24px, -24px, 0) rotate(calc(var(--rotate, 0deg) + 10deg)); }
+  100% { transform: translate3d(-16px, 12px, 0) rotate(calc(var(--rotate, 0deg) - 8deg)); }
+}
+/* Keep content above the decorative study-tools layer without breaking the welcome overlay. */
+#splash { position: fixed; inset: 0; z-index: 100000; }
+.container, .ad-container, body > footer { position: relative; z-index: 1; }
+.splash-card { width: min(92vw, 560px); padding: clamp(28px, 5vw, 48px); }
+.splash-card h1 { font-size: clamp(27px, 5vw, 42px); line-height: 1.2; }
+.splash-card p { line-height: 1.7; }
+.welcome-icon { font-size: clamp(27px, 5vw, 40px); margin-bottom: 16px; letter-spacing: 5px; }
+.welcome-credit { margin-top: 13px; opacity: .85; }
+.welcome-button { width: auto; min-width: 210px; margin-top: 24px; padding: 14px 24px; background: linear-gradient(100deg, #14b8a6, #6366f1); box-shadow: 0 12px 28px rgba(20,184,166,.25); }
+.welcome-button span { margin-left: 8px; }
+.welcome-hint { margin-top: 15px; font-size: 12px !important; opacity: .8; }
+.splash-leaving { animation: welcomeFade .35s ease forwards !important; pointer-events: none; }
+@keyframes welcomeFade { to { opacity: 0; visibility: hidden; } }
+@media (prefers-reduced-motion: reduce) { #splash { animation: none; } .splash-leaving { animation: none !important; } }
+@media (max-width: 600px) {
+  .study-tool { font-size: calc(var(--size, 34px) * .72); opacity: .16; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .study-tool { animation: none; }
+}
+
 </style>
 </head>
 
 <body>
+<div class="study-tools-bg" aria-hidden="true">
+  <span class="study-tool" style="--x:5%;--y:12%;--size:42px;--duration:17s;--delay:-2s;--rotate:-14deg">📚</span>
+  <span class="study-tool" style="--x:18%;--y:68%;--size:34px;--duration:21s;--delay:-8s;--rotate:12deg">✏️</span>
+  <span class="study-tool" style="--x:28%;--y:24%;--size:31px;--duration:19s;--delay:-5s;--rotate:8deg">📐</span>
+  <span class="study-tool" style="--x:42%;--y:80%;--size:39px;--duration:23s;--delay:-11s;--rotate:-8deg">📓</span>
+  <span class="study-tool" style="--x:57%;--y:13%;--size:36px;--duration:20s;--delay:-4s;--rotate:9deg">🎓</span>
+  <span class="study-tool" style="--x:69%;--y:70%;--size:40px;--duration:18s;--delay:-9s;--rotate:-12deg">🧮</span>
+  <span class="study-tool" style="--x:82%;--y:28%;--size:35px;--duration:22s;--delay:-6s;--rotate:14deg">💡</span>
+  <span class="study-tool" style="--x:92%;--y:78%;--size:42px;--duration:19s;--delay:-3s;--rotate:-9deg">🎒</span>
+  <span class="study-tool" style="--x:9%;--y:44%;--size:29px;--duration:24s;--delay:-13s;--rotate:7deg">🖊️</span>
+  <span class="study-tool" style="--x:75%;--y:48%;--size:30px;--duration:21s;--delay:-7s;--rotate:-5deg">📏</span>
+  <span class="study-tool" style="--x:48%;--y:37%;--size:27px;--duration:25s;--delay:-10s;--rotate:11deg">✂️</span>
+  <span class="study-tool" style="--x:34%;--y:91%;--size:31px;--duration:20s;--delay:-6s;--rotate:-11deg">📖</span>
+</div>
 
 <!-- Announcement -->
 <div class="marquee-box">
@@ -310,13 +565,12 @@ button:hover {
     <div class="glow glow3"></div>
 
     <div class="splash-card">
-        <h1>Internal Calculator</h1>
-        <p>Loading Smart Marks Prediction...</p>
-        <p>R24 • Created By: Anonymous</p>
-
-        <div class="progress">
-            <span></span>
-        </div>
+        <div class="welcome-icon" aria-hidden="true">📚 🎓 🧮</div>
+        <h1>Welcome to Internal Calculator</h1>
+        <p>Calculate your internal marks and estimate the marks you need to pass.</p>
+        <p class="welcome-credit">R24 • Created By: Anonymous</p>
+        <button type="button" id="startCalculator" class="welcome-button">Open Calculator <span aria-hidden="true">→</span></button>
+        <p class="welcome-hint">Your marks calculator is ready when you are.</p>
     </div>
 </div>
 
@@ -387,6 +641,70 @@ button:hover {
         Enter values and click Calculate
     </div>
 
+    <button type="button" class="pass-toggle" id="passToggle" aria-expanded="false" aria-controls="passPanel">
+        🎯 Marks Required to Pass + Pie Charts
+    </button>
+
+    <section class="pass-panel" id="passPanel" aria-labelledby="passHeading">
+        <h3 id="passHeading">Marks Required to Pass</h3>
+        <p class="pass-intro">Enter your internal marks and external exam details.</p>
+
+        <label for="passInternal">Internal marks obtained</label>
+        <input type="number" id="passInternal" min="0" step="any" placeholder="e.g. 18">
+
+        <label for="passInternalMax">Maximum internal marks</label>
+        <input type="number" id="passInternalMax" min="0.01" step="any" value="40">
+
+        <label for="passExternalMax">External exam maximum marks</label>
+        <input type="number" id="passExternalMax" min="0.01" step="any" value="60">
+
+        <label for="passTarget">Total marks required to pass</label>
+        <input type="number" id="passTarget" min="0" step="any" value="40">
+
+        <label for="passExternalMinimum">Minimum external marks (if required)</label>
+        <input type="number" id="passExternalMinimum" min="0" step="any" value="0">
+
+        <button type="button" onclick="calculatePassMarks()">Calculate Passing Marks</button>
+        <div class="pass-error" id="passError" role="alert"></div>
+
+        <div class="pass-result" id="passResult" aria-live="polite">
+            Enter your values to see how many external marks you need.
+        </div>
+
+        <div class="pass-charts">
+            <div class="pass-chart-card">
+                <h4>Total Marks Breakdown</h4>
+                <p>Internal marks and external marks needed</p>
+                <div class="pass-pie-wrap">
+                    <div class="pass-pie" id="passTotalPie" role="img" aria-label="Total marks pie chart"
+                         style="background:conic-gradient(#4f46e5 0 45%, #0d9488 45% 100%)">
+                        <div class="pass-pie-center"><strong id="passTotalCenter">40</strong><span>target total</span></div>
+                    </div>
+                </div>
+                <div class="pass-legend">
+                    <div class="pass-legend-row"><span class="pass-legend-label"><i class="pass-dot" style="background:#4f46e5"></i>Internal</span><strong id="passInternalLegend">18</strong></div>
+                    <div class="pass-legend-row"><span class="pass-legend-label"><i class="pass-dot" style="background:#0d9488"></i>External needed</span><strong id="passNeededLegend">22</strong></div>
+                </div>
+            </div>
+            <div class="pass-chart-card">
+                <h4>External Exam Breakdown</h4>
+                <p>Required marks and marks remaining</p>
+                <div class="pass-pie-wrap">
+                    <div class="pass-pie" id="passExternalPie" role="img" aria-label="External exam pie chart"
+                         style="background:conic-gradient(#f59e0b 0 37%, #e2e8f0 37% 100%)">
+                        <div class="pass-pie-center"><strong id="passExternalCenter">60</strong><span>exam maximum</span></div>
+                    </div>
+                </div>
+                <div class="pass-legend">
+                    <div class="pass-legend-row"><span class="pass-legend-label"><i class="pass-dot" style="background:#f59e0b"></i>Required</span><strong id="passRequiredLegend">22</strong></div>
+                    <div class="pass-legend-row"><span class="pass-legend-label"><i class="pass-dot" style="background:#e2e8f0"></i>Remaining</span><strong id="passRemainingLegend">38</strong></div>
+                </div>
+            </div>
+        </div>
+        <p class="pass-note">The result assumes your college uses a combined internal + external total, unless you enter a separate minimum external mark. Check your college's official passing rules.</p>
+    </section>
+
+
 </div>
 
 <!-- Bottom Ad Placement -->
@@ -395,11 +713,23 @@ button:hover {
 </div>
 
 <script>
-/* Show calculator after splash screen */
-window.addEventListener("load", function () {
-    setTimeout(function () {
-        document.getElementById("main").style.display = "block";
-    }, 1000);
+/* Show the calculator only after the visitor chooses to start. */
+window.addEventListener("DOMContentLoaded", function () {
+    const splash = document.getElementById("splash");
+    const main = document.getElementById("main");
+    const startButton = document.getElementById("startCalculator");
+
+    main.style.display = "none";
+    startButton.addEventListener("click", function () {
+        splash.classList.add("splash-leaving");
+        window.setTimeout(function () {
+            splash.style.display = "none";
+            main.style.display = "block";
+            main.setAttribute("tabindex", "-1");
+            main.focus({ preventScroll: true });
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }, 350);
+    });
 });
 
 /* Attendance marks */
@@ -523,8 +853,110 @@ function calculateMarks() {
         attendance + " = " + total.toFixed(2) +
         "</b>";
 }
+/* Marks Required to Pass feature: separate from the existing internal calculator */
+document.getElementById("passToggle").addEventListener("click", function () {
+    const panel = document.getElementById("passPanel");
+    const isOpen = panel.classList.toggle("show");
+    this.setAttribute("aria-expanded", String(isOpen));
+    if (isOpen) calculatePassMarks();
+});
+
+function passFmt(number) {
+    return Number.isInteger(number) ? String(number) : number.toFixed(2).replace(/0+$/, "").replace(/\.$/, "");
+}
+
+function updatePassPie(elementId, first, second, color1, color2) {
+    const total = first + second;
+    const percent = total > 0 ? Math.max(0, Math.min(100, (first / total) * 100)) : 0;
+    document.getElementById(elementId).style.background =
+        `conic-gradient(${color1} 0 ${percent}%, ${color2} ${percent}% 100%)`;
+}
+
+function calculatePassMarks() {
+    const internalRaw = document.getElementById("passInternal").value.trim();
+    const internalMaxRaw = document.getElementById("passInternalMax").value.trim();
+    const externalMaxRaw = document.getElementById("passExternalMax").value.trim();
+    const targetRaw = document.getElementById("passTarget").value.trim();
+    const externalMinRaw = document.getElementById("passExternalMinimum").value.trim();
+    const error = document.getElementById("passError");
+    const result = document.getElementById("passResult");
+    error.textContent = "";
+
+    if ([internalRaw, internalMaxRaw, externalMaxRaw, targetRaw, externalMinRaw].some(v => v === "")) {
+        error.textContent = "Please fill in all fields with valid numbers.";
+        return;
+    }
+
+    const internal = Number(internalRaw);
+    const internalMax = Number(internalMaxRaw);
+    const externalMax = Number(externalMaxRaw);
+    const target = Number(targetRaw);
+    const externalMin = Number(externalMinRaw);
+
+    if (![internal, internalMax, externalMax, target, externalMin].every(Number.isFinite) ||
+        internal < 0 || internalMax <= 0 || externalMax <= 0 || target < 0 || externalMin < 0) {
+        error.textContent = "Enter valid non-negative marks. Maximum marks must be greater than zero.";
+        return;
+    }
+    if (internal > internalMax) {
+        error.textContent = "Internal marks obtained cannot exceed the maximum internal marks.";
+        return;
+    }
+    if (externalMin > externalMax) {
+        error.textContent = "Minimum external marks cannot exceed the external exam maximum.";
+        return;
+    }
+    if (target > internalMax + externalMax) {
+        error.textContent = "The total pass target cannot exceed the combined maximum marks.";
+        return;
+    }
+
+    const requiredByTotal = Math.max(0, target - internal);
+    const needed = Math.max(requiredByTotal, externalMin);
+    const possible = needed <= externalMax;
+    const remaining = possible ? externalMax - needed : 0;
+
+    document.getElementById("passTotalCenter").textContent = passFmt(target);
+    document.getElementById("passExternalCenter").textContent = passFmt(externalMax);
+    document.getElementById("passInternalLegend").textContent = passFmt(internal);
+    document.getElementById("passNeededLegend").textContent = possible ? passFmt(needed) : "Not possible";
+    document.getElementById("passRequiredLegend").textContent = possible ? passFmt(needed) : "Exceeds maximum";
+    document.getElementById("passRemainingLegend").textContent = passFmt(remaining);
+
+    updatePassPie("passTotalPie", internal, possible ? needed : externalMax, "#4f46e5", "#0d9488");
+    updatePassPie("passExternalPie", possible ? needed : externalMax, remaining, "#f59e0b", "#e2e8f0");
+
+    document.getElementById("passTotalPie").setAttribute("aria-label",
+        `Internal marks ${passFmt(internal)} and external marks needed ${possible ? passFmt(needed) : "more than maximum"}.`);
+    document.getElementById("passExternalPie").setAttribute("aria-label",
+        `External exam maximum ${passFmt(externalMax)}, required ${possible ? passFmt(needed) : "not achievable"}, remaining ${passFmt(remaining)}.`);
+
+    if (!possible) {
+        result.innerHTML = "<b>Passing target is not achievable with these values.</b><br>" +
+            "You need " + passFmt(needed) + " external marks, but the maximum is " + passFmt(externalMax) + ".";
+        result.innerHTML += '<br><span class="pass-status bad">✕ PASS TARGET NOT ACHIEVABLE</span>';
+    } else if (needed === 0) {
+        result.innerHTML = "<b>Your passing target is already met by your internal marks.</b><br>" +
+            "Required external marks: 0 / " + passFmt(externalMax) + ".";
+        result.innerHTML += '<br><span class="pass-status">✓ TARGET ALREADY MET</span>';
+    } else {
+        result.innerHTML = "<b>You need " + passFmt(needed) + " / " + passFmt(externalMax) +
+            " external marks to pass.</b><br>" +
+            "Internal marks: " + passFmt(internal) + " / " + passFmt(internalMax) + "<br>" +
+            "Target total: " + passFmt(target) + "<br>" +
+            "External marks remaining after the minimum needed: " + passFmt(remaining) + ".";
+        result.innerHTML += needed / externalMax >= 0.8
+            ? '<br><span class="pass-status warn">! HIGH TARGET</span>'
+            : '<br><span class="pass-status">✓ PASS IS ACHIEVABLE</span>';
+    }
+}
+
+["passInternal", "passInternalMax", "passExternalMax", "passTarget", "passExternalMinimum"]
+    .forEach(id => document.getElementById(id).addEventListener("input", function () {
+        if (document.getElementById("passPanel").classList.contains("show")) calculatePassMarks();
+    }));
+
 </script>
 
 </body>
 </html>
-```
