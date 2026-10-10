@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +8,7 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
+<!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XFYY4YVQS7"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
@@ -15,298 +17,514 @@ gtag('js', new Date());
 gtag('config', 'G-XFYY4YVQS7');
 </script>
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box;}
+<!-- Google AdSense -->
+<script async
+src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7276040108438831"
+crossorigin="anonymous"></script>
 
-body{
-font-family:'Poppins',sans-serif;
-background:linear-gradient(135deg,#141e30,#243b55);
-overflow-x:hidden;
-overflow-y:auto;
-min-height:100vh;
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #141e30, #243b55);
+    overflow-x: hidden;
+    overflow-y: auto;
+    min-height: 100vh;
 }
 
 /* Scrollbar */
-::-webkit-scrollbar{width:8px;}
-::-webkit-scrollbar-track{background:#1c2838;}
-::-webkit-scrollbar-thumb{background:#06b6d4;border-radius:10px;}
-
-/* Marquee */
-.marquee-box{
-width:100%;
-background:linear-gradient(90deg,#ff512f,#dd2476);
-color:#fff;
-font-size:15px;
-font-weight:600;
-padding:10px 0;
-position:sticky;
-top:0;
-z-index:99999;
-box-shadow:0 4px 12px rgba(0,0,0,.25);
+::-webkit-scrollbar {
+    width: 8px;
 }
 
-/* Splash */
-#splash{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100vh;
-background:linear-gradient(135deg,#020617,#0f172a,#1e3a8a,#06b6d4);
-background-size:400% 400%;
-animation:bgMove 4s ease infinite, fadeOut 1s ease forwards;
-animation-delay:0s,1s;
-display:flex;
-justify-content:center;
-align-items:center;
-overflow:hidden;
-z-index:99999;
+::-webkit-scrollbar-track {
+    background: #1c2838;
 }
 
-.glow{
-position:absolute;
-border-radius:50%;
-filter:blur(40px);
-opacity:.5;
-animation:float 4s ease-in-out infinite;
+::-webkit-scrollbar-thumb {
+    background: #06b6d4;
+    border-radius: 10px;
 }
 
-.glow1{width:180px;height:180px;background:#06b6d4;top:10%;left:15%;}
-.glow2{width:220px;height:220px;background:#8b5cf6;bottom:15%;right:10%;animation-delay:1s;}
-.glow3{width:140px;height:140px;background:#22c55e;bottom:25%;left:20%;animation-delay:2s;}
-
-.splash-card{
-position:relative;
-z-index:2;
-padding:35px 45px;
-border-radius:24px;
-background:rgba(255,255,255,.08);
-backdrop-filter:blur(14px);
-border:1px solid rgba(255,255,255,.18);
-text-align:center;
-box-shadow:0 10px 30px rgba(0,0,0,.35);
+/* Announcement */
+.marquee-box {
+    width: 100%;
+    background: linear-gradient(90deg, #ff512f, #dd2476);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 99999;
+    box-shadow: 0 4px 12px rgba(0,0,0,.25);
 }
 
-.splash-card h1{
-font-size:36px;
-color:#fff;
-font-weight:700;
+/* Splash Screen */
+#splash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(
+        135deg,
+        #020617,
+        #0f172a,
+        #1e3a8a,
+        #06b6d4
+    );
+    background-size: 400% 400%;
+    animation: bgMove 4s ease infinite, fadeOut 1s ease forwards;
+    animation-delay: 0s, 1s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    z-index: 99999;
 }
 
-.splash-card p{
-margin-top:10px;
-font-size:15px;
-color:#dbeafe;
+.glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(40px);
+    opacity: .5;
+    animation: float 4s ease-in-out infinite;
 }
 
-.progress{
-margin-top:18px;
-width:220px;
-height:8px;
-border-radius:10px;
-background:rgba(255,255,255,.15);
-overflow:hidden;
+.glow1 {
+    width: 180px;
+    height: 180px;
+    background: #06b6d4;
+    top: 10%;
+    left: 15%;
 }
 
-.progress span{
-display:block;
-height:100%;
-width:0%;
-background:linear-gradient(90deg,#22c55e,#06b6d4,#8b5cf6);
-animation:loadBar 1s linear forwards;
+.glow2 {
+    width: 220px;
+    height: 220px;
+    background: #8b5cf6;
+    bottom: 15%;
+    right: 10%;
+    animation-delay: 1s;
 }
 
-/* Main */
-.container{
-display:none;
-width:90%;
-max-width:520px;
-margin:30px auto;
-background:rgba(255,255,255,.12);
-backdrop-filter:blur(15px);
-padding:30px;
-border-radius:22px;
-box-shadow:0 15px 35px rgba(0,0,0,.3);
+.glow3 {
+    width: 140px;
+    height: 140px;
+    background: #22c55e;
+    bottom: 25%;
+    left: 20%;
+    animation-delay: 2s;
 }
 
-h2{
-text-align:center;
-color:#fff;
-font-size:30px;
-margin-bottom:8px;
+.splash-card {
+    position: relative;
+    z-index: 2;
+    padding: 35px 45px;
+    border-radius: 24px;
+    background: rgba(255,255,255,.08);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,.18);
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,.35);
 }
 
-.sub{
-text-align:center;
-color:#dbeafe;
-font-size:14px;
-margin-bottom:18px;
+.splash-card h1 {
+    font-size: 36px;
+    color: #fff;
+    font-weight: 700;
 }
 
-label{
-display:block;
-margin-top:12px;
-font-weight:600;
-color:#fff;
+.splash-card p {
+    margin-top: 10px;
+    font-size: 15px;
+    color: #dbeafe;
 }
 
-input{
-width:100%;
-padding:12px;
-margin-top:6px;
-border:none;
-border-radius:12px;
-font-size:16px;
-outline:none;
+.progress {
+    margin-top: 18px;
+    width: 220px;
+    height: 8px;
+    border-radius: 10px;
+    background: rgba(255,255,255,.15);
+    overflow: hidden;
 }
 
-button{
-width:100%;
-padding:14px;
-margin-top:18px;
-border:none;
-border-radius:12px;
-font-size:18px;
-font-weight:600;
-color:#fff;
-background:linear-gradient(90deg,#ff512f,#dd2476);
-cursor:pointer;
+.progress span {
+    display: block;
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #22c55e, #06b6d4, #8b5cf6);
+    animation: loadBar 1s linear forwards;
 }
 
-.result{
-margin-top:20px;
-background:#fff;
-padding:18px;
-border-radius:15px;
-line-height:1.9;
-font-size:15px;
+/* Main Calculator */
+.container {
+    display: none;
+    width: 90%;
+    max-width: 520px;
+    margin: 30px auto;
+    background: rgba(255,255,255,.12);
+    backdrop-filter: blur(15px);
+    padding: 30px;
+    border-radius: 22px;
+    box-shadow: 0 15px 35px rgba(0,0,0,.3);
+}
+
+h2 {
+    text-align: center;
+    color: #fff;
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.sub {
+    text-align: center;
+    color: #dbeafe;
+    font-size: 14px;
+    margin-bottom: 18px;
+}
+
+label {
+    display: block;
+    margin-top: 12px;
+    font-weight: 600;
+    color: #fff;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 18px;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(90deg, #ff512f, #dd2476);
+    cursor: pointer;
+    transition: opacity .2s ease;
+}
+
+button:hover {
+    opacity: .9;
+}
+
+.result {
+    margin-top: 20px;
+    background: #fff;
+    color: #111827;
+    padding: 18px;
+    border-radius: 15px;
+    line-height: 1.9;
+    font-size: 15px;
+    overflow-wrap: anywhere;
+}
+
+/* Ad container */
+.ad-container {
+    width: 90%;
+    max-width: 520px;
+    margin: 20px auto;
+    text-align: center;
+    color: #dbeafe;
 }
 
 /* Animations */
-@keyframes bgMove{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
+@keyframes bgMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
-@keyframes loadBar{
-from{width:0%;}
-to{width:100%;}
+@keyframes loadBar {
+    from { width: 0%; }
+    to { width: 100%; }
 }
 
-@keyframes float{
-0%,100%{transform:translateY(0);}
-50%{transform:translateY(-20px);}
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
 }
 
-@keyframes fadeOut{
-to{opacity:0;visibility:hidden;}
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+/* Mobile layout */
+@media (max-width: 480px) {
+    .container {
+        width: 92%;
+        padding: 22px;
+        margin: 22px auto;
+    }
+
+    .splash-card {
+        width: 90%;
+        padding: 28px 18px;
+    }
+
+    .splash-card h1 {
+        font-size: 28px;
+    }
+
+    h2 {
+        font-size: 25px;
+    }
 }
 </style>
 </head>
 
 <body>
 
+<!-- Announcement -->
 <div class="marquee-box">
-<marquee behavior="scroll" direction="left">
-📢 Friends Internal Marks Formula is Changed • Now Check Your Calculations
-</marquee>
+    <marquee behavior="scroll" direction="left">
+        📢 Friends Internal Marks Formula is Changed • Now Check Your Calculations
+    </marquee>
 </div>
 
-<!-- Splash -->
+<!-- Splash Screen -->
 <div id="splash">
-<div class="glow glow1"></div>
-<div class="glow glow2"></div>
-<div class="glow glow3"></div>
+    <div class="glow glow1"></div>
+    <div class="glow glow2"></div>
+    <div class="glow glow3"></div>
 
-<div class="splash-card">
-<h1>Internal Calculator</h1>
-<p>Loading Smart Marks Prediction...</p>
-<p>R24 • Created By: Anonymous</p>
+    <div class="splash-card">
+        <h1>Internal Calculator</h1>
+        <p>Loading Smart Marks Prediction...</p>
+        <p>R24 • Created By: Anonymous</p>
 
-<div class="progress">
-<span></span>
-</div>
-</div>
+        <div class="progress">
+            <span></span>
+        </div>
+    </div>
 </div>
 
-<!-- Main -->
+<!-- Top Ad Placement -->
+<div class="ad-container">
+    <!-- Add your approved AdSense ad-unit code here when available. -->
+</div>
+
+<!-- Calculator -->
 <div class="container" id="main">
 
-<h2>Internal Calculator</h2>
-<div class="sub">R24 • Created By: Anonymous</div>
+    <h2>Internal Calculator</h2>
+    <div class="sub">R24 • Created By: Anonymous</div>
 
-<label>A1 Marks</label>
-<input type="number" id="a1">
+    <label for="a1">A1 Marks</label>
+    <input
+        type="number"
+        id="a1"
+        min="0"
+        max="20"
+        step="any"
+        placeholder="Enter A1 marks"
+    >
 
-<label>A2 Marks</label>
-<input type="number" id="a2">
+    <label for="a2">A2 Marks</label>
+    <input
+        type="number"
+        id="a2"
+        min="0"
+        max="20"
+        step="any"
+        placeholder="Enter A2 marks"
+    >
 
-<label>M1 Marks</label>
-<input type="number" id="m1">
+    <label for="m1">M1 Marks</label>
+    <input
+        type="number"
+        id="m1"
+        min="0"
+        step="any"
+        placeholder="Enter Midterm 1 marks"
+    >
 
-<label>M2 Marks</label>
-<input type="number" id="m2">
+    <label for="m2">M2 Marks</label>
+    <input
+        type="number"
+        id="m2"
+        min="0"
+        step="any"
+        placeholder="Enter Midterm 2 marks"
+    >
 
-<label>Attendance %</label>
-<input type="number" id="att">
+    <label for="att">Attendance %</label>
+    <input
+        type="number"
+        id="att"
+        min="0"
+        max="100"
+        step="any"
+        placeholder="Enter attendance percentage"
+    >
 
-<button onclick="calculateMarks()">Calculate</button>
+    <button type="button" onclick="calculateMarks()">
+        Calculate
+    </button>
 
-<div class="result" id="output">
-Enter values and click Calculate
+    <div class="result" id="output" aria-live="polite">
+        Enter values and click Calculate
+    </div>
+
 </div>
 
+<!-- Bottom Ad Placement -->
+<div class="ad-container">
+    <!-- Add your approved AdSense ad-unit code here when available. -->
 </div>
 
 <script>
-setTimeout(function(){
-document.getElementById("main").style.display="block";
-},1000);
+/* Show calculator after splash screen */
+window.addEventListener("load", function () {
+    setTimeout(function () {
+        document.getElementById("main").style.display = "block";
+    }, 1000);
+});
 
-function getAttendanceMarks(att){
-if(att>=90) return 5;
-else if(att>=85) return 4;
-else if(att>=80) return 3;
-else if(att>=75) return 2;
-else return 0;
+/* Attendance marks */
+function getAttendanceMarks(att) {
+    if (att >= 90) return 5;
+    else if (att >= 85) return 4;
+    else if (att >= 80) return 3;
+    else if (att >= 75) return 2;
+    else return 0;
 }
 
-function calculateMarks(){
+/* Validate numeric inputs */
+function readNumber(id, label, min, max) {
+    const input = document.getElementById(id);
+    const rawValue = input.value.trim();
 
-var a1=parseFloat(document.getElementById("a1").value)||0;
-var a2=parseFloat(document.getElementById("a2").value)||0;
-var m1=parseFloat(document.getElementById("m1").value)||0;
-var m2=parseFloat(document.getElementById("m2").value)||0;
-var att=parseFloat(document.getElementById("att").value)||0;
+    if (rawValue === "") {
+        return {
+            value: null,
+            error: "Please enter " + label + "."
+        };
+    }
 
-var avg=(a1+a2)/2;
-var assignment=avg*(15/20);
+    const value = Number(rawValue);
 
-var highMid=Math.max(m1,m2);
-var lowMid=Math.min(m1,m2);
+    if (!Number.isFinite(value)) {
+        return {
+            value: null,
+            error: "Please enter a valid number for " + label + "."
+        };
+    }
 
-var high=highMid*0.75;
-var low=lowMid*0.24;
+    if (value < min || (max !== null && value > max)) {
+        return {
+            value: null,
+            error: label + " must be between " + min +
+                (max !== null ? " and " + max : "") + "."
+        };
+    }
 
-var attendance=getAttendanceMarks(att);
+    return { value: value, error: null };
+}
 
-var total=assignment+high+low+attendance;
+/* Calculate internal marks */
+function calculateMarks() {
+    const fields = [
+        { id: "a1", label: "A1 marks", min: 0, max: 20 },
+        { id: "a2", label: "A2 marks", min: 0, max: 20 },
+        { id: "m1", label: "M1 marks", min: 0, max: null },
+        { id: "m2", label: "M2 marks", min: 0, max: null },
+        { id: "att", label: "attendance percentage", min: 0, max: 100 }
+    ];
 
-document.getElementById("output").innerHTML=
-"<b>Total Internal Marks = "+total.toFixed(2)+"</b><br><br>"+
-"<b>Detailed Calculations:</b><br><br>"+
-"A1 = "+a1+"<br>"+
-"A2 = "+a2+"<br>"+
-"Average = ("+a1+" + "+a2+") ÷ 2 = "+avg.toFixed(2)+"<br>"+
-"Assignment = "+avg.toFixed(2)+" × (15/20) = "+assignment.toFixed(2)+"<br><br>"+
-"Higher Mid = "+highMid+" × 0.75 = "+high.toFixed(2)+"<br>"+
-"Lower Mid = "+lowMid+" × 0.24 = "+low.toFixed(2)+"<br><br>"+
-"Attendance % = "+att+"<br>"+
-"Attendance Bonus = "+attendance+"<br><br>"+
-"<b>Final Total = "+assignment.toFixed(2)+" + "+high.toFixed(2)+" + "+low.toFixed(2)+" + "+attendance+" = "+total.toFixed(2)+"</b>";
+    const values = {};
+
+    for (const field of fields) {
+        const result = readNumber(
+            field.id,
+            field.label,
+            field.min,
+            field.max
+        );
+
+        if (result.error) {
+            document.getElementById("output").textContent = result.error;
+            document.getElementById(field.id).focus();
+            return;
+        }
+
+        values[field.id] = result.value;
+    }
+
+    const a1 = values.a1;
+    const a2 = values.a2;
+    const m1 = values.m1;
+    const m2 = values.m2;
+    const att = values.att;
+
+    const avg = (a1 + a2) / 2;
+    const assignment = avg * (15 / 20);
+
+    const highMid = Math.max(m1, m2);
+    const lowMid = Math.min(m1, m2);
+
+    const high = highMid * 0.75;
+    const low = lowMid * 0.24;
+
+    const attendance = getAttendanceMarks(att);
+    const total = assignment + high + low + attendance;
+
+    const output = document.getElementById("output");
+
+    output.innerHTML =
+        "<b>Total Internal Marks = " + total.toFixed(2) + "</b><br><br>" +
+
+        "<b>Detailed Calculations:</b><br><br>" +
+
+        "A1 = " + a1 + "<br>" +
+        "A2 = " + a2 + "<br>" +
+
+        "Average = (" + a1 + " + " + a2 + ") ÷ 2 = " +
+        avg.toFixed(2) + "<br>" +
+
+        "Assignment = " + avg.toFixed(2) +
+        " × (15/20) = " + assignment.toFixed(2) + "<br><br>" +
+
+        "Higher Mid = " + highMid +
+        " × 0.75 = " + high.toFixed(2) + "<br>" +
+
+        "Lower Mid = " + lowMid +
+        " × 0.24 = " + low.toFixed(2) + "<br><br>" +
+
+        "Attendance % = " + att + "<br>" +
+
+        "Attendance Bonus = " + attendance + "<br><br>" +
+
+        "<b>Final Total = " +
+        assignment.toFixed(2) + " + " +
+        high.toFixed(2) + " + " +
+        low.toFixed(2) + " + " +
+        attendance + " = " + total.toFixed(2) +
+        "</b>";
 }
 </script>
 
 </body>
 </html>
+```
